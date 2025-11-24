@@ -16,28 +16,45 @@ public class JsonGsonApplication {
 
 		SpringApplication.run(JsonGsonApplication.class, args);
 
-		// Crear un objeto Libro
-		Libro lib = new Libro();
-		lib.setTitulo("Una breve historia de Casi todo");
-		lib.setAutor("Bill Crimson");
-		lib.setNumPaginas(640);
+//		// Crear un objeto Libro
+//		Libro lib = new Libro();
+//		lib.setTitulo("Una breve historia de Casi todo");
+//		lib.setAutor("Bill Crimson");
+//		lib.setNumPaginas(640);
+//
+//		// Crear el objeto Gson
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//		String json = gson.toJson(lib);
+//		System.out.println(json);
+//
+//
+//		//Guardar el json en un archivo
+//        try (PrintWriter pw = new PrintWriter(new File("libro.json"))){
+//
+//			pw.println(json);
+//			pw.flush();
+//
+//		} catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
-		// Crear el objeto Gson
+		Datos datos = new Datos();
+		datos.setNombre("Leandro");
+		datos.setApellido("Caponetto");
+		datos.setEdad(45);
+		datos.setTelefono(123456789);
+
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(lib);
+		String json = gson.toJson(datos);
 		System.out.println(json);
 
-
 		//Guardar el json en un archivo
-        try (PrintWriter pw = new PrintWriter(new File("libro.json"))){
-
+		try (PrintWriter pw = new PrintWriter(new File("datos.json"))){
 			pw.println(json);
 			pw.flush();
-
 		} catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
+			throw new RuntimeException(e);
+		}
 
     }
 
